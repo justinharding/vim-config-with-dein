@@ -1,0 +1,78 @@
+---
+# PLUGINS
+# ==========================================
+
+# Startup
+# -------
+- repo: Shougo/dein.vim
+- repo: rafi/awesome-vim-colorschemes
+- repo: rafi/vim-badge
+- repo: itchyny/vim-parenmatch
+
+# Lazy Loading
+# ==========================================
+
+# Languages
+# ---------
+- { repo: vim-python/python-syntax, on_ft: python }
+- { repo: Vimjas/vim-python-pep8-indent, on_ft: python }
+- { repo: vim-scripts/python_match.vim, on_ft: python }
+
+# ==========================================
+# Commands
+# --------
+- repo: scrooloose/nerdtree
+  depends: nerdtree-git-plugin
+  on_map: { n: <Plug> }
+  hook_post_source: source $VIMPATH/config/plugins/nerdtree.vim
+
+- { repo: Xuyuanp/nerdtree-git-plugin, on_source: nerdtree }
+
+- repo: easymotion/vim-easymotion
+  on_map: { n: <Plug> }
+  hook_source: |
+    let g:EasyMotion_do_mapping = 0
+    let g:EasyMotion_prompt = 'Jump to → '
+    let g:EasyMotion_keys = 'fjdksweoavn'
+    let g:EasyMotion_smartcase = 1
+    let g:EasyMotion_use_smartsign_us = 1
+
+- { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
+
+# ==========================================
+# Completion
+# ----------
+- repo: Shougo/deoplete.nvim
+  depends: context_filetype.vim
+  if: has('nvim') && empty($VIM_MINIMAL)
+  on_i: 1
+  hook_add: let g:deoplete#enable_at_startup = 1
+  hook_source: source $VIMPATH/config/plugins/deoplete.vim
+
+- { repo: Shougo/context_filetype.vim, lazy: 1, if: empty($VIM_MINIMAL) }
+
+# ==========================================
+# Completion
+# ----------
+- repo: Shougo/deoplete.nvim
+  depends: context_filetype.vim
+  if: has('nvim') && empty($VIM_MINIMAL)
+  on_i: 1
+  hook_add: let g:deoplete#enable_at_startup = 1
+  hook_source: source $VIMPATH/config/plugins/deoplete.vim
+# ==========================================
+# Denite
+# ------
+- repo: Shougo/denite.nvim
+  on_cmd: Denite
+  hook_source: source $VIMPATH/config/plugins/denite.vim
+  hook_post_source: source $VIMPATH/config/plugins/denite.vim
+
+# - { repo: chemzqm/unite-location, on_source: denite.nvim }
+# - { repo: chemzqm/denite-git, on_source: denite.nvim }
+# - { repo: rafi/vim-denite-z, on_source: denite.nvim }
+# - { repo: rafi/vim-denite-session, on_source: denite.nvim }
+
+- repo: mileszs/ack.vim
+
+# - repo: ledger/vim-ledger
