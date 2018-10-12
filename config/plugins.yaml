@@ -66,13 +66,19 @@
 
 - { repo: Shougo/context_filetype.vim, lazy: 1, if: empty($VIM_MINIMAL) }
 
+- repo: Raimondi/delimitMate
+  on_i: 1
+  hook_source: |
+    let g:delimitMate_expand_cr = 1
+    let g:delimitMate_excluded_ft = 'html'
+
 # ==========================================
 # Denite
 # ------
 - repo: Shougo/denite.nvim
   on_cmd: Denite
+  # hook_post_source: source $VIMPATH/config/plugins/denite.vim
   hook_source: source $VIMPATH/config/plugins/denite.vim
-  hook_post_source: source $VIMPATH/config/plugins/denite.vim
 
 # - { repo: chemzqm/unite-location, on_source: denite.nvim }
 # - { repo: chemzqm/denite-git, on_source: denite.nvim }
