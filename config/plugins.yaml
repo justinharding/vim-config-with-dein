@@ -66,11 +66,25 @@
 
 - { repo: Shougo/context_filetype.vim, lazy: 1, if: empty($VIM_MINIMAL) }
 
+- repo: Shougo/neosnippet.vim
+  depends: [ neosnippet-snippets, context_filetype.vim ]
+  if: empty($VIM_MINIMAL)
+  on_event: InsertCharPre
+  on_ft: snippet
+  hook_add: let g:neosnippet#data_directory = $VARPATH.'/snippets'
+  hook_source: |
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#expand_word_boundary = 1
+    autocmd MyAutoCmd InsertLeave * NeoSnippetClearMarkers
+
 - repo: Raimondi/delimitMate
   on_i: 1
   hook_source: |
     let g:delimitMate_expand_cr = 1
     let g:delimitMate_excluded_ft = 'html'
+
+- { repo: Shougo/neosnippet-snippets, if: empty($VIM_MINIMAL) }
 
 # ==========================================
 # Denite
