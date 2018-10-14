@@ -18,6 +18,8 @@
 - { repo: Vimjas/vim-python-pep8-indent, on_ft: python }
 - { repo: vim-scripts/python_match.vim, on_ft: python }
 
+- { repo: ericcurtin/CurtineIncSw.vim, on_ft: [ c, h, cpp, hpp, cxx, hxx ] }
+
 - repo: plasticboy/vim-markdown
   on_ft: markdown
   hook_add: |
@@ -52,7 +54,9 @@
     let g:EasyMotion_smartcase = 1
     let g:EasyMotion_use_smartsign_us = 1
 
-- { repo: tpope/vim-commentary, on_map: <Plug>Commentary }
+- repo: tpope/vim-commentary
+  on_map: <Plug>Commentary }
+  hook_source: source $VIMPATH/config/plugins/commentary.vim
 
 # ==========================================
 # Completion
@@ -91,7 +95,7 @@
 # ------
 - repo: Shougo/denite.nvim
   on_cmd: Denite
-  # hook_post_source: source $VIMPATH/config/plugins/denite.vim
+  hook_post_source: source $VIMPATH/config/plugins/denite.vim
   hook_source: source $VIMPATH/config/plugins/denite.vim
 
 # - { repo: chemzqm/unite-location, on_source: denite.nvim }

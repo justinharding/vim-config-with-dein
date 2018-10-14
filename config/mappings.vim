@@ -11,4 +11,5 @@
 "}}}
 
 :nnoremap <esc> :noh<cr><esc>
+map <F5> :call CurtineIncSw()<CR>
 
